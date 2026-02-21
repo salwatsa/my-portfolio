@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #0f070b;
+  --foreground: #e2e8f0;
+  --accent-pink: #db2777;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent-pink: var(--color-accent-pink)
+  --font-sans: var(--font-quicksand);
+}
+
+/* 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f070b;
+    --foreground: #e2e8f0;
+    --accent-pink: #db2777;
+  }
+} */
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  /* font-family: var(--font-sans); */
+  font-family: 'Quicksand', sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
+}
+
+
