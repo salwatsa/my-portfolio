@@ -3,7 +3,7 @@ export interface Project {
     title: string;
     desc: string;
     tags: string[];
-    link: string;
+    link?: string;
 }
 
 // Data Project

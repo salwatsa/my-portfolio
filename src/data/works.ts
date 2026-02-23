@@ -5,7 +5,7 @@ export interface Works {
   company: string;
   description: string[];
   technologies: string[];
-  link: string;
+  link?: string;
 }
 
 // Data Experience Works

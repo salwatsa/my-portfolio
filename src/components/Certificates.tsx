@@ -7,34 +7,55 @@ const Certificates = () => {
     <div>
       <h3 className="text-white font-bold mb-6 lg:hidden">CERTIFICATES</h3>
       {/* mapping */}
-      <div className="flex flex-row flex-wrap justify-between gap-5">
-        {certificates.map((item, index) => (
-          <a
-            key={index}
-            href={item.link}
-            target="_blank"
-            className="w-full md:w-56 xl:w-60 flex flex-col group p-3 rounded-lg border border-white/5 bg-white/5 hover:border-pink-500/30 hover:bg-pink-500/5 transition-all duration-300"
-          >
-            <div className="relative w-full h-40 mb-4 overflow-hidden rounded-md">
-              <Image
-                src={item.img}
-                alt={item.title}
-                fill 
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-            </div>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {certificates.map((item, index) => {
+          const hasValidLink = Boolean(item.link && item.link !== "#");
+          const WrapperTag = hasValidLink ? "a" : "div";
 
-            <div className="flex flex-col grow">
-              <h3 className="text-sm font-bold text-slate-100 group-hover:text-pink-400 transition-colors line-clamp-2">
-                {item.title}
-              </h3>
+          return (
+            <WrapperTag
+              key={index}
+              {...(hasValidLink && {
+                href: item.link,
+                target: "_blank",
+                rel: "noopener noreferrer",
+              })}
+              className={`group block h-full w-full rounded-lg border border-white/5 bg-white/5 p-4 transition-all duration-300 
+          ${hasValidLink ? "cursor-pointer hover:-translate-y-1 hover:border-pink-500/30 hover:bg-pink-500/5" : "cursor-default"}`}
+            >
+              <div className="relative mb-4 aspect-video w-full overflow-hidden rounded-md bg-slate-800">
+                <Image
+                  src={item.img}
+                  alt={item.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
 
-              <p className="text-xs text-slate-400 mt-2 line-clamp-3">
-                {item.description}
-              </p>
-            </div>
-          </a>
-        ))}
+              <div className="flex flex-col">
+                <div className="flex items-center justify-between gap-2">
+                  <h3
+                    className={`text-sm font-bold transition-colors line-clamp-2
+              ${hasValidLink ? "text-slate-100 group-hover:text-pink-400" : "text-slate-100"}`}
+                  >
+                    {item.title}
+                  </h3>
+
+                  {hasValidLink && (
+                    <span className="text-slate-400 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1">
+                      ↗
+                    </span>
+                  )}
+                </div>
+
+                <p className="mt-2 text-xs leading-relaxed text-slate-400 line-clamp-3">
+                  {item.description}
+                </p>
+              </div>
+            </WrapperTag>
+          );
+        })}
       </div>
     </div>
   );

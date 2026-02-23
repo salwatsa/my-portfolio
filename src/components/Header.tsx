@@ -1,5 +1,6 @@
 import React from 'react'
 import Navigation from './Navigation';
+import Contacts from './Contacts';
 
 const Header = () => {
   return (
@@ -21,8 +22,9 @@ const Header = () => {
       </div>
 
       {/* Social Media */}
-      <div className="hidden lg:block xl:mt-8 text-slate-400">
+      <div className="block xl:mt-8 text-slate-400">
         {/* Icon GitHub/LinkedIn*/}
+        < Contacts />
       </div>
     </header>
   );

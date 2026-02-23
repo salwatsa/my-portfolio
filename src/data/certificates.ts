@@ -2,7 +2,7 @@
 export interface Certificate {
   title: string;
   description: string;
-  link: string;
+  link?: string;
   img: string;
 }
 
